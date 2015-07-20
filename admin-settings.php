@@ -4,6 +4,7 @@ include('config.php');
 
 <?php
   
+  
   if ( isset($_POST['submit1']) == true) {
     
 	mysql_query("UPDATE settings SET header_logo='".$_POST['header_logo']."',footer_logo='".$_POST['footer_logo']."',login_logo='".$_POST['login_logo']."'");
@@ -13,9 +14,10 @@ include('config.php');
     
 mysql_query("UPDATE settings SET Facebook_url='".$_POST['Facebook_url']."',youtube_url='".$_POST['youtube_url']."',Twitter_url='".$_POST['Twitter_url']."'");
     
-  } else if ( isset($_POST['submit3']) == true) {
+  } else if ( isset($_POST['submit3-2']) == true) {
     
 mysql_query("UPDATE users SET user_type='".$_POST['user_type']."'");
+
     
   }
 ?>
@@ -43,14 +45,14 @@ mysql_query("UPDATE users SET user_type='".$_POST['user_type']."'");
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400,300,300italic' rel='stylesheet' type='text/css'>	
 	<!-- Font-Awesome -->
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css" media="screen" />
     <!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="css/font-awesome-ie7.css" media="screen" /><![endif]-->
 	
 	<!-- Animo css-->
 	<link href="css/animate+animo.css" rel="stylesheet" media="screen">
 
     <!-- Picker -->	
-	<link rel="stylesheet" href="assets/css/jquery-ui.css" />	
+	<link rel="stylesheet" href="css/jquery-ui.css" />	
 	
     <!-- jQuery -->		
     <script src="js/jquery.v2.0.3.js"></script>
@@ -330,7 +332,7 @@ $login_logo=$row['login_logo'];
 						  
 						<div class="clearfix"></div>  
 						
-						<span class="size16 bold">Διαχείρηση Χρηστών</span>
+						<span class="size16 bold">Διαχείρηση Χρηστών - Με την τιμή 1 ορίζεται ένας απλός χρήστης (τιμή 0) σε διαχειριστής</span>
 						<div class="line2"></div>
 						  
 
@@ -338,21 +340,21 @@ $login_logo=$row['login_logo'];
 						<div class="col-md-12 offset-0">
 			<form class="form-group" action="admin-settings.php" method="post">			
 	<?php
-                    $sql = mysql_query('select * from users' );
+                    $sql = mysql_query('select * from users where user_type=0' );
+					
                     while($dnn2 = mysql_fetch_array($sql))
                     {
-					?>	
+					?>	<br>
                     Ρόλος του Χρήστη <?php echo $dnn2['name']; ?>
-<br></br>					
+<br>				
                                   	
-<input type="text" class="form-control" name="user_type" value="<?php echo $dnn2['user_type']; ?>" rel="popover" id="user_type" data-content="Αυτό το πεδίο είναι υποχρεωτικό" data-original-title="Εδώ μπορείς να επεξεργασθείς το Όνομά σου">
-							
-		<br></br>					
-	      
+<input type="text" class="form-control" name="user_type" value="<?php echo $dnn2['user_type']; ?>" rel="popover" id="user_type" data-content="Αυτό το πεδίο είναι υποχρεωτικό" data-original-title="Εδώ μπορείς να επεξεργασθείς το Όνομά σου">					
+		<br>	
+		
+	       <input type="submit" name="submit3-<?php echo $dnn2['id']; ?>" class="cyanbtn  margtop20"/><br></br>	
            <?php 
 						}
 						?>
-						 <input type="submit" name="submit3" class="cyanbtn  margtop20"/>
 						 </form>
 						</div>
 						<!-- END OF COL 1 -->

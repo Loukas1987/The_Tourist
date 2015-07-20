@@ -34,7 +34,7 @@ if(isset($_GET['id']))
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400,300,300italic' rel='stylesheet' type='text/css'>	
 	<!-- Font-Awesome -->
     <link rel="stylesheet" type="text/css" href="css/font-awesome.css" media="screen" />
-    <!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="assets/css/font-awesome-ie7.css" media="screen" /><![endif]-->
+    <!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="css/font-awesome-ie7.css" media="screen" /><![endif]-->
 	
     <!-- REVOLUTION BANNER CSS SETTINGS -->
     <link rel="stylesheet" type="text/css" href="css/fullscreen.css" media="screen" />
@@ -401,7 +401,7 @@ while($dnn = mysql_fetch_array($req))
 						 <?php
                                mysql_connect('localhost','user730','fTybYz7N') or die(mysql_error());
                                mysql_select_db('user730_db2') or die(mysql_error());  
-					           $req = mysql_query('select * FROM places' );
+					           $req = mysql_query('select * FROM places WHERE id="'.$id.'"' );
 							   $row = mysql_fetch_array($req);
 							   $map_variable = $row['map_variable'];
                                $id = intval($_GET['id']);

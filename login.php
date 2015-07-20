@@ -24,7 +24,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400,300,300italic' rel='stylesheet' type='text/css'>	
 	<!-- Font-Awesome -->
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.css" media="screen" />
-	<!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="assets/css/font-awesome-ie7.css" media="screen" /><![endif]-->
+	<!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="css/font-awesome-ie7.css" media="screen" /><![endif]-->
 	
 	<!-- Load jQuery -->
 	<script src="js/jquery.v2.0.3.js"></script>
