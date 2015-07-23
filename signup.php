@@ -36,9 +36,16 @@ include('config.php');
 .center_alignbottom {
   position: initial!important;
   }
+  .login-fullwidith{height:1125px!important}
   .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
   position: inherit!important;}
-
+  
+  .message {
+  color: red;
+}
+.message1 {
+  color: green;
+}
 </style>
 	
 
@@ -50,8 +57,17 @@ include('config.php');
 		
 		<!-- Login Wrap  -->
 		<div class="login-wrap">
-			<img src="images/logo.png" class="login-img" alt="logo"/><br/>
-			<div class="login-c1" height="auto!important">
+			<?php
+                   include('config.php');
+				    $sql = mysql_query('select * from settings' );
+                    while($dnn2 = mysql_fetch_array($sql))
+                    {
+					?>
+			<img src="<?php echo $dnn2['login_logo']; ?>" class="login-img" alt="logo"/><br/>
+			<?php 
+						}
+						?>
+						<div class="login-c1" height="auto!important">
 			<div class="cpadding50">
 				<!-- START FORM TO REGISTER NEW MEMBER -->  
 									     <?php
@@ -105,8 +121,7 @@ if(isset($_POST['name'],$_POST['lastname'],$_POST['address'],$_POST['city'],$_PO
 						                             //WE DONT DISPLAY THE FORM
 						                             $form = false;
 											?>
-                                                 <div class="message">Έχετε εγγραφεί επιτυχώς. Μπορείτε πλέον να συνδεθείτε.<br />
-                                                 <a href="login.php">Σύνδεση</a>
+                                                 <div class="message1">Έχετε εγγραφεί επιτυχώς. Μπορείτε πλέον να συνδεθείτε.<br />
 												 </div><!-- END: DIV.MESSAGE -->
                                             <?php
 					                        }
@@ -154,7 +169,7 @@ if(isset($_POST['name'],$_POST['lastname'],$_POST['address'],$_POST['city'],$_PO
 	                                 //We display a message if necessary
 	                                 if(isset($message))
 	                                 {
-		                             echo '<div class="message">'.$message.'</div>';
+		                             echo '<div class="message"><b>'.$message.'</b></div>';
 	                                 }
 	                                 //We display the form
                                      ?>
@@ -226,11 +241,29 @@ if(isset($_POST['name'],$_POST['lastname'],$_POST['address'],$_POST['city'],$_PO
 			</div>		
 		</div>
 	      	<div class="login-c3">
-				<div class="left"><a href="index.php" class="whitelink"><span></span>Αριχκή Σελίδα</a></div>
-				<div class="right"><a href="login.php" class="whitelink">Σύνδεση</a></div>
+				<div class="center_alignbottom"><a href="login.php" class="whitelink"><span></span> Σύνδεση</a></div>
 			</div>		
 	</div>	
-		<script src="js/initialize-loginpage.js"></script>
+	<script>
+			$(document).ready(function($){
+			function onBgresize() {
+				var $gfwidth = window.innerWidth;
+				var $gfheight = window.innerHeight;
+				
+				var $loginw = $('.login-wrap').width();
+				var $loginh = $('.login-wrap').height();
+				
+				$('.login-fullwidith').css({'width': $gfwidth +'px', 'height': $gfheight +'px'});
+				
+				$('.login-wrap').css({'margin-left': $gfwidth/2-$loginw/2 +'px', 'margin-top': $gfheight/2-$loginh +'px'});
+				
+			}
+			onBgresize();
+			$(window).resize(function() {
+				onBgresize();
+			});
+		});		
+		</script>
 	<script src="js/jquery.easing.js"></script>
 	<script src="js/bootstrap.min.js"></script>
   </body>

@@ -207,7 +207,7 @@ $req1 = mysql_query('SELECT COUNT( * ) AS count,tourism_type FROM places GROUP B
 while(($dnn = mysql_fetch_array($req))&& $dnn1=mysql_fetch_array($req1))
 {
 ?>
-								<li><a href="tourism_type?id=<?php echo $dnn['id']; ?>"><?php echo $dnn['title']; ?></a> <span class="badge indent0"><a href="tourism_type?id=<?php echo $dnn1['tourism_type']; ?>"><?php echo $dnn1['count']; ?></a></span></li>
+								<li><?php echo $dnn['title']; ?> <span class="badge indent0"><?php echo $dnn1['count']; ?></span></li>
 								<?php 
 							}
                         ?>

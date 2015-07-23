@@ -2262,7 +2262,7 @@ margin-top:22px;
 .cstyle02{position:absolute; background:#f7f7f7; width:100%; margin-left:-20px; padding:20px;}
 .cstyle03{background:#fff; margin-top:800px; position:relative; z-index:100; display:block;}
 .cstyle04{position:relative; top:-41px;}
-.cstyle05{display:block; background:white; width:100%; height:324px; overflow:hidden;}
+.cstyle05{display:block; background:white; width:100%; height:324px; overflow:hidden;border-radius:35px}
 .cstyle06{min-height:640px;}
 .cstyle07{min-height:570px;}
 .cstyle08{line-height:7px; margin-top:16px;}

@@ -6,16 +6,26 @@ include('config.php');
   if ( isset($_POST['submit1']) == true) {
     
  mysql_query("INSERT INTO tourism_types(image_src,description,title) VALUES ('{$_POST['image_src']}','{$_POST['description']}','{$_POST['title']}')");
+     
+  } 
+  
+  else if ( isset($_POST['submit0']) == true) {
+  
     
-  } else if ( isset($_POST['submit2']) == true) {
+mysql_query('update users set name="'.$_POST['name'].'",lastname="'.$_POST['lastname'].'",address="'.$_POST['address'].'",city="'.$_POST['city'].'", email="'.$_POST['email'].'",zip_code="'.$_POST['zip_code'].'",phone_number="'.$_POST['phone_number'].'", image_src="'.$_POST['image_src'].'" where username="'.$_SESSION['username'].'"');  
+  
+
+  }
+  
+  else if ( isset($_POST['submit2']) == true) {
     
  mysql_query("INSERT INTO places(title,description,map_variable,tourism_type,main_image_src,image_src1,image_src2,image_src3,image_src4,image_src5) VALUES ('{$_POST['title']}','{$_POST['description']}','{$_POST['map_variable']}','{$_POST['tourism_type']}','{$_POST['main_image_src']}','{$_POST['image_src1']}','{$_POST['image_src2']}','{$_POST['image_src3']}','{$_POST['image_src4']}','{$_POST['image_src5']}')");
   
   }
   
   else if ( isset($_POST['submit3']) == true) {
-    
- mysql_query("INSERT INTO places(title,description,map_variable,tourism_type,main_image_src,image_src1,image_src2,image_src3,image_src4,image_src5) VALUES ('{$_POST['title']}','{$_POST['description']}','{$_POST['map_variable']}','{$_POST['tourism_type']}','{$_POST['main_image_src']}','{$_POST['image_src1']}','{$_POST['image_src2']}','{$_POST['image_src3']}','{$_POST['image_src4']}','{$_POST['image_src5']}')");
+    	                                
+mysql_query('UPDATE users SET password="'.$_POST['password'].'" WHERE username="'.$_SESSION['username'].'"');
   
   }
 ?>
@@ -256,7 +266,7 @@ if(isset($_POST['name'],$_POST['lastname'],$_POST['address'],$_POST['city'],$_PO
 					                                                                if($dn['nb']==0 or $_POST['username']==$_SESSION['username'])
 					                                                                {
 						                                                            //We edit the user informations
-						                                                                 if(mysql_query('update users set name="'.$name.'",lastname="'.$lastname.'",address="'.$address.'",city="'.$city.'",username="'.$username.'", password="'.$password.'", email="'.$email.'",zip_code="'.$zip_code.'",phone_number="'.$phone_number.'", image_src="'.$image_src.'" where username="'.$_SESSION['username'].'"'))
+						                                                                 if(mysql_query('update users set name="'.$name.'",lastname="'.$lastname.'",address="'.$address.'",city="'.$city.'", email="'.$email.'",zip_code="'.$zip_code.'",phone_number="'.$phone_number.'", image_src="'.$image_src.'" where username="'.$_SESSION['username'].'"'))
 						                                                                 {
 							                                                              //We dont display the form
 							                                                               $form = false;
@@ -331,6 +341,7 @@ if(isset($_POST['name'],$_POST['lastname'],$_POST['address'],$_POST['city'],$_PO
                                                                        {
         //otherwise, we display the values of the database
                         $dnn = mysql_fetch_array(mysql_query('select * from users where username="'.$_SESSION['username'].'"'));
+						$id = htmlentities($dnn['id'], ENT_QUOTES, 'UTF-8');
                         $name = htmlentities($dnn['name'], ENT_QUOTES, 'UTF-8');
 						$lastname = htmlentities($dnn['lastname'], ENT_QUOTES, 'UTF-8');
 						$address = htmlentities($dnn['address'], ENT_QUOTES, 'UTF-8');
@@ -376,7 +387,7 @@ if(isset($_POST['name'],$_POST['lastname'],$_POST['address'],$_POST['city'],$_PO
 
 						<!-- COL 1 -->
 						<div class="col-md-12 offset-0">
-			            <form class="form-group" action="profile.php" method="post">
+			            <form class="form-group" action="profile.php?id=<?php echo $id; ?>" method="post">
                                   	
 							<br/>
 							Όνομα*:			
@@ -385,8 +396,8 @@ if(isset($_POST['name'],$_POST['lastname'],$_POST['address'],$_POST['city'],$_PO
 							Επώνυμο*:			
 							<input type="text" class="form-control" name="lastname" value="<?php echo $lastname; ?>" rel="popover" id="name" data-content="Αυτό το πεδίο είναι υποχρεωτικό" data-original-title="Εδώ μπορείς να επεξεργασθείς το Επώνυμό σου">
 							<br/>
-							Όνομα Χρήστη*:
-							<input type="text" class="form-control" name="username" value="<?php echo $username; ?>" rel="popover" id="username" data-content="Αυτό το πεδίο είναι υποχρεωτικό" data-original-title="Εδώ μπορείς να επεξεργασθείς το Όνομα Χρήστη σου">						  
+							Εικόνα Προφίλ (URL)*:
+							<input type="text" class="form-control" name="image_src" value="<?php echo $image_src; ?>" rel="popover" id="username" data-content="Αυτό το πεδίο είναι υποχρεωτικό" data-original-title="Εδώ μπορείς να επεξεργασθείς το Όνομα Χρήστη σου">						  
 							<br/>
 							E-mail*:
 							<input type="text" class="form-control" name="email" value="<?php echo $email; ?>" id="email" data-content="Αυτό το πεδίο είναι υποχρεωτικό" data-original-title="Εδώ μπορείς να επεξεργασθείς το E-mail σου">
@@ -413,7 +424,7 @@ if(isset($_POST['name'],$_POST['lastname'],$_POST['address'],$_POST['city'],$_PO
 					    <input type="text" name="zip_code" id="address" value="<?php echo $zip_code; ?>" class="form-control" />
 						
 						<br/><br/>
-					    <input type="submit" name="submit" class="cyanbtn  margtop20"/>
+					    <input type="submit" name="submit0" class="cyanbtn  margtop20"/>
 						 </form>
            
 						</div>
@@ -430,7 +441,7 @@ if(isset($_POST['name'],$_POST['lastname'],$_POST['address'],$_POST['city'],$_PO
 						
 							<span class="dark size18">Νέα Καταχώρηση Μορφής Τουρισμού</span>
 							<div class="line4"></div>
-						    <form class="form-group" action="profile.php" method="post">
+						    <form class="form-group" action="profile.php?id=<?php echo $id; ?>" method="post">
 	
 							Τίτλος Μορφής Τουρισμού*<br/>
 							<input type="text" class="form-control" name="title" rel="popover" id="title" data-content="Αυτό το πεδίο είναι υποχρεωτικό" data-original-title="Εδώ μπορείς να επεξεργασθείς τον τίτλος της νέας μορφής τουρισμού">
@@ -456,7 +467,7 @@ if(isset($_POST['name'],$_POST['lastname'],$_POST['address'],$_POST['city'],$_PO
 							
 							
 									
-						    <form class="form-group" action="profile.php" method="post">
+						    <form class="form-group" action="profile.php?id=<?php echo $id; ?>" method="post">
 	
 							Ονομασία Τοποθεσίας*<br/>
 							<input type="text" class="form-control" name="title" rel="popover" id="title" data-content="Αυτό το πεδίο είναι υποχρεωτικό" data-original-title="Εδώ μπορείς να επεξεργασθείς τον τίτλος της νέας μορφής τουρισμού">
@@ -513,10 +524,10 @@ while($dnn = mysql_fetch_array($req))
 						
 							<span class="dark size18">Αλλαγή Κωδικού Πρόσβασης</span>
 							<div class="line4"></div>
-						    <form class="form-group" action="profile.php" method="post">
+						    <form class="form-group" action="profile.php?id=<?php echo $id; ?>" method="post">
 	
 							Όνομα Χρήστη<br/>
-							<input type="text" class="form-control" name="username" value="<?php echo $username; ?>" rel="popover" id="username" data-content="Αυτό το πεδίο είναι υποχρεωτικό" data-original-title="Εδώ μπορείς να επεξεργασθείς το Όνομα Χρήστη σου">						  
+							<input type="text" class="form-control" name="username" value="<?php echo $username; ?>" rel="popover" id="username" data-content="Αυτό το πεδίο είναι υποχρεωτικό" data-original-title="Εδώ μπορείς να επεξεργασθείς το Όνομα Χρήστη σου" disabled>						  
 							<br/>
 							Κωδικός Πρόσβασης<br/>
 							<input type="password" class="form-control" name="password" value="<?php echo $password; ?>" rel="popover" id="password" data-content="Αυτό το πεδίο είναι υποχρεωτικό" data-original-title="Εδώ μπορείς να επεξεργασθείς το Όνομα Χρήστη σου">						  
@@ -601,28 +612,12 @@ while($dnn = mysql_fetch_array($req))
 	</div>
 	
 	
-	<!-- Javascript  -->
 	<script src="js/js-profile.js"></script>
-	
-    <!-- Nicescroll  -->	
 	<script src="js/jquery.nicescroll.min.js"></script>
-	
-    <!-- Custom functions -->
     <script src="js/functions.js"></script>
-	
-    <!-- Custom Select -->
 	<script type='text/javascript' src='js/jquery.customSelect.js'></script>
-	
-	<!-- Load Animo -->
-	<script src="js/animo.js"></script>
-
-    <!-- Picker -->	
 	<script src="js/jquery-ui.js"></script>	
-
-    <!-- Picker -->	
     <script src="js/jquery.easing.js"></script>	
-	
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
   </body>
 </html>

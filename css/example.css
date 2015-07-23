@@ -61,7 +61,7 @@ width:100%; height: 70px;
 
 /* rate result */
 .rate-result-cnt{
-	width: 82px; height: 18px;
+	width: 81px; height: 16px;
 	position: relative;
 	background-color: #ccc;
 float:left;
@@ -76,5 +76,6 @@ float:left;
 	height: 18px;
 	background-color: #ffbe10;
 	position: absolute;
+	max-width:100%;
 }
 

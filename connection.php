@@ -36,7 +36,7 @@ include('config.php');
   color: white!important;
 }
 .login-c2 {
-height: 200px!important;
+height: 425px!important;
 }
 .center_alignbottom2 {
 bottom: 18px;
@@ -71,7 +71,29 @@ text-align: center;
 	                 unset($_SESSION['username'], $_SESSION['id']);
                     ?>
 <div style="text-align:center;">Για Αποσύνδεση πατήστε στο κουμπί  <div style="color:red"><b>OK</b></div> ότι συμφωνείτε με την ενέργεια αυτή.</div><br />
-                 
+                </div></div>
+				<style>
+.login-c2 {
+height: 200px!important;
+}
+.login-c3 {
+margin-top: 250px!important;
+}
+</style>
+				<div class="login-c2">
+				<div class="logmargfix">
+					
+							<div class="center_alignbottom">								
+							<form action="index.php" method="post">
+
+					<input class="btn-search4"  type="submit" value="OK" onclick="errorMessage()"/>		</center>					
+</form>
+							</div>
+				</div>
+			</div>
+			<div class="login-c3">
+				<div class="center_alignbottom"><a href="index.php" class="whitelink"><span></span>Επιστροφή στο Site</a></div>
+			</div>
                   <?php
                                                      }
                    else
@@ -105,7 +127,29 @@ text-align: center;
 			    $_SESSION['id'] = $dn['id'];
                 ?>
                 <b><div style="color:green;text-align:center">Έχετε καταχωρήσει επιτυχώς τα στοιχεία του  λογαριασμού σας.</b></div>
-                <br />
+                <br /></div></div>
+				<style>
+				.login-c2 {
+height: 200px!important;
+}
+.login-c3 {
+margin-top: 250px!important;
+}
+</style>
+				<div class="login-c2">
+				<div class="logmargfix">
+					
+							<div class="center_alignbottom">								
+							<form action="index.php" method="post">
+
+					<input class="btn-search4"  type="submit" value="OK" onclick="errorMessage()"/>		</center>					
+</form>
+							</div>
+				</div>
+			</div>
+			<div class="login-c3">
+				<div class="center_alignbottom"><a href="index.php" class="whitelink"><span></span>Επιστροφή στο Site</a></div>
+			</div>
                 <?php
 		        }
 		         else
@@ -113,8 +157,7 @@ text-align: center;
 			//Otherwise, we say the password is incorrect.
 			$form = true;
 			$message = '<b><div style="color:red;text-align:center">Ο συνδυασμός Όνομα Χρήστη και Κωδικού δεν είναι σωστός.Παρακαλώ δοκιμάστε πάλι...</div></b>';
-		        }
-	            }
+		        }}
 	            else
 	           {
 		$form = true;
@@ -130,22 +173,34 @@ text-align: center;
 ?>
               <p>Παρακαλώ εισάγετε τα στοιχεία σας για να συνδεθείτε...</p>
                                 <br></br>
-             <?php
+								<form action="connection.php" method="post">
+<input type="text"  size="20" required="" name="username"  placeholder="Όνομα Χρήστη" id="username" value="<?php echo htmlentities($ousername, ENT_QUOTES, 'UTF-8'); ?>"  class="form-control logpadding" />
+			<br/>
+			<input type="password" name="password" id="password" size="20" placeholder="Κωδικός Πρόσβασης" required="" class="form-control logpadding" />			
+											<br>
+			</div></div>
+			<div class="login-c2">
+				<div class="logmargfix">
+					<style>
+					.login-c3 {
+margin-top: 475px!important;
+}
+</style>
+							<div class="center_alignbottom">
+					<input class="btn-search4"  type="submit" value="OK" onclick="errorMessage()"/>		</center>					
+
+							</div>
+				</div>
+			</div>
+			</form>
+            <?php
 	           }
-              }
-              ?>
-				</div>
-				</div>
-		   <div class="login-c2">
-		 <div class="logmargfix">
-							<div class="center_alignbottom2">
-                                      <a onclick="errorMessage()" href="<?php echo $url_home; ?>"><div class="btn-search4"  style="text-align:center;color:white" >OK
-									  </div></a>
-					        </div>
-								
-							
-					</div>
-</div>
+             }
+            ?>
+
+			<div class="login-c3">
+				<div class="center_alignbottom"><a href="index.php" class="whitelink"><span></span>Επιστροφή στο Site</a></div>
+			</div>		
        
 		</div>
 </div>
