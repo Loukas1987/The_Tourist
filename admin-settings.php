@@ -4,10 +4,13 @@ include('config.php');
 
 <?php
   
+<<<<<<< HEAD
   $sql = mysql_query('select * from users where user_type=0' );
 					$i=0;
                    $dnn2 = mysql_fetch_array($sql);
 				   
+=======
+>>>>>>> origin/master
   
   if ( isset($_POST['submit1']) == true) {
     
@@ -18,7 +21,16 @@ include('config.php');
     
 mysql_query("UPDATE settings SET Facebook_url='".$_POST['Facebook_url']."',youtube_url='".$_POST['youtube_url']."',Twitter_url='".$_POST['Twitter_url']."'");
     
+<<<<<<< HEAD
   } 
+=======
+  } else if ( isset($_POST['submit3-2']) == true) {
+    
+mysql_query("UPDATE users SET user_type='".$_POST['user_type']."'");
+
+    
+  }
+>>>>>>> origin/master
 ?>
 
 <!DOCTYPE html>
@@ -340,18 +352,31 @@ $login_logo=$row['login_logo'];
 			<form class="form-group" action="admin-settings.php" method="post">			
 	<?php
                     $sql = mysql_query('select * from users where user_type=0' );
+<<<<<<< HEAD
 					$i=0;
                     while($dnn2 = mysql_fetch_array($sql))
                     {
 					$i++;
+=======
+					
+                    while($dnn2 = mysql_fetch_array($sql))
+                    {
+>>>>>>> origin/master
 					?>	<br>
                     Ρόλος του Χρήστη <?php echo $dnn2['name']; ?>
 <br>				
                                   	
+<<<<<<< HEAD
 <input type="text" class="form-control" name="user_type-<?php echo $dnn2['id']; ?>" value="<?php echo $dnn2['user_type']; ?>" rel="popover" id="user_type" data-content="Αυτό το πεδίο είναι υποχρεωτικό" data-original-title="Εδώ μπορείς να επεξεργασθείς το Όνομά σου">					
 		<br>	
 		
 	       <input type="submit" name="submit-<?php echo $dnn2['id']; ?>" class="cyanbtn  margtop20"/><br></br>	
+=======
+<input type="text" class="form-control" name="user_type" value="<?php echo $dnn2['user_type']; ?>" rel="popover" id="user_type" data-content="Αυτό το πεδίο είναι υποχρεωτικό" data-original-title="Εδώ μπορείς να επεξεργασθείς το Όνομά σου">					
+		<br>	
+		
+	       <input type="submit" name="submit3-<?php echo $dnn2['id']; ?>" class="cyanbtn  margtop20"/><br></br>	
+>>>>>>> origin/master
            <?php 
 						}
 						?>

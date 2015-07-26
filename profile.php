@@ -473,7 +473,7 @@ if(isset($_POST['name'],$_POST['lastname'],$_POST['address'],$_POST['city'],$_PO
 							<input type="text" class="form-control" name="title" rel="popover" id="title" data-content="Αυτό το πεδίο είναι υποχρεωτικό" data-original-title="Εδώ μπορείς να επεξεργασθείς τον τίτλος της νέας μορφής τουρισμού">
 							<br/>
 							Περιγραφή - Ορισμός Μορφής Τουρισμού*<br/>
-						   <textarea class="form-control" name="description" id="description"  cols="74%" placeholder="Λίγα λόγια για το γεγονός..." rows="10" tabindex="4"></textarea>
+						   <textarea class="form-control" name="description" id="description"  cols="74%" placeholder="Λίγα λόγια για την τοποθεσία..." rows="10" tabindex="4"></textarea>
 							<br/>
 							Μεταβλητή για τον εντοπισμό στον χάρτη*<br/>
 							<input type="text" class="form-control" name="map_variable" rel="popover" id="map_variable" data-content="Αυτό το πεδίο είναι υποχρεωτικό" data-original-title="Εδώ μπορείς να επεξεργασθείς τον τίτλος της νέας μορφής τουρισμού">
