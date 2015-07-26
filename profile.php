@@ -12,14 +12,32 @@ include('config.php');
   else if ( isset($_POST['submit0']) == true) {
   
     
+<<<<<<< HEAD
 mysql_query('update users set name="'.$_POST['name'].'",lastname="'.$_POST['lastname'].'",address="'.$_POST['address'].'",city="'.$_POST['city'].'", email="'.$_POST['email'].'",zip_code="'.$_POST['zip_code'].'",phone_number="'.$_POST['phone_number'].'", image_src="'.$_POST['image_src'].'" where username="'.$_SESSION['username'].'"');  
   
 
   }
   
   else if ( isset($_POST['submit2']) == true) {
+=======
+  } 
+  
+  else if ( isset($_POST['submit0']) == true) {
+>>>>>>> origin/master
+    
+mysql_query('update users set name="'.$_POST['name'].'",lastname="'.$_POST['lastname'].'",address="'.$_POST['address'].'",city="'.$_POST['city'].'", email="'.$_POST['email'].'",zip_code="'.$_POST['zip_code'].'",phone_number="'.$_POST['phone_number'].'", image_src="'.$_POST['image_src'].'" where username="'.$_SESSION['username'].'"');  
+  
+  }
+  
+<<<<<<< HEAD
+  else if ( isset($_POST['submit3']) == true) {
+    	                                
+mysql_query('UPDATE users SET password="'.$_POST['password'].'" WHERE username="'.$_SESSION['username'].'"');
+=======
+  else if ( isset($_POST['submit2']) == true) {
     
  mysql_query("INSERT INTO places(title,description,map_variable,tourism_type,main_image_src,image_src1,image_src2,image_src3,image_src4,image_src5) VALUES ('{$_POST['title']}','{$_POST['description']}','{$_POST['map_variable']}','{$_POST['tourism_type']}','{$_POST['main_image_src']}','{$_POST['image_src1']}','{$_POST['image_src2']}','{$_POST['image_src3']}','{$_POST['image_src4']}','{$_POST['image_src5']}')");
+>>>>>>> origin/master
   
   }
   
