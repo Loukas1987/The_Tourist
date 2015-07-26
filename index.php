@@ -1,5 +1,6 @@
 <?php
 include('config.php');
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,7 +39,13 @@ include('config.php');
 	
     <!-- jQuery -->	
     <script src="js/jquery.v2.0.3.js"></script>
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
+	<script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+    </script> 
 	
   </head>
   <body id="top">
@@ -241,13 +248,7 @@ while($dnn1 = mysql_fetch_array($req))
 	
 
 	<script src="js/js-index.js"></script>	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
-	<script type="text/javascript">
-    $(window).load(function() {
-        $('#slider').nivoSlider();
-    });
-    </script> 
+	
     <!-- Custom functions -->
     <script src="js/functions.js"></script>
 	

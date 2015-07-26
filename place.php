@@ -6,6 +6,10 @@ if(isset($_GET['id']))
 	                                    $id = intval($_GET['id']);}
          $post_id = $id; 
 
+		   if ( isset($_POST['tourism_type']) == true) {
+
+		 	mysql_query('UPDATE users SET tourism_type="'.$_POST['tourism_type'].'" WHERE username="'.$_SESSION['username'].'"');
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -181,7 +185,7 @@ while($dnn = mysql_fetch_array($req))
 			<div class="left">
 				<ul class="bcrumbs">
 					<li>/</li>
-					<li><a href="tourism_type.php?id=<?php echo htmlentities($dnn['tourism_type'], ENT_QUOTES, 'UTF-8'); ?>">Είδος Τουρισμού</a></li>
+					<li><a href="tourism_types?id=<?php echo htmlentities($dnn['tourism_type'], ENT_QUOTES, 'UTF-8'); ?>">Είδος Τουρισμού</a></li>
 					<li>/</li>
 					<li><a href="place.php?id=<?php echo htmlentities($dnn['id'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlentities($dnn['title'], ENT_QUOTES, 'UTF-8'); ?></a></li>
 					<li>/</li>					
@@ -311,7 +315,37 @@ while($dnn = mysql_fetch_array($req))
 </div>
 				</div>
 				<div class="clearfix"></div><br/>
-				
+				<div class="hpadding20">
+					 <?php
+                               mysql_connect('localhost','user730','fTybYz7N') or die(mysql_error());
+                               mysql_select_db('user730_db2') or die(mysql_error()); 
+                               $id = intval($_GET['id']);				
+	                           $user = $_SESSION['username'];   
+					           $req = mysql_query("SELECT * FROM places WHERE id='$id'" );	
+      while($row = mysql_fetch_array($req))  {
+	  $tourism_type = $row['tourism_type'];
+	  }
+	  $req1 = mysql_query("SELECT * FROM users WHERE username='$user'" );
+while($row1 = mysql_fetch_array($req1))
+{
+$user_tourism_type = $row1['tourism_type'];
+}
+ if ($tourism_type != $user_tourism_type)
+   {   
+                               ?>
+							   <form action="place.php?id=<?php echo $id; ?>" method="post">
+							<input type="hidden" name="tourism_type" id="tourism_type" value="<?php echo $tourism_type; ?>" class="form-control" />
+								<input class="add2fav margtop5" type="submit" value="Γίνε μέλος σε αυτήν την μορφή Τουρισμού!"/>	
+                             	</form>							
+				<?php
+						}
+						else {?>
+						
+					<a href="#" class="add2fav margtop5">Είστε μελος αυτής της Ομάδας</a>
+<?php
+						}
+						?>
+				</div>
 				
 			</div>
 			<!-- END OF RIGHT INFO -->
@@ -451,12 +485,18 @@ while($row1 = mysql_fetch_array($req1))
                                mysql_connect('localhost','user730','fTybYz7N') or die(mysql_error());
                                mysql_select_db('user730_db2') or die(mysql_error()); 
                                $id = intval($_GET['id']);							   
-					           $req = mysql_query("SELECT * FROM places WHERE id='$id'" );							   
+					           $req = mysql_query("SELECT * FROM places WHERE id='$id'" );	
+                               $counter = 0;							   
       while($row = mysql_fetch_array($req))  {
 	  $tourism_type = $row['tourism_type'];
 	  $req1 = mysql_query("SELECT * FROM places WHERE tourism_type='$tourism_type'" );
+	  
 while($row1 = mysql_fetch_array($req1))
 {
+ if ($id != $row1['id'])
+   {
+   $counter++;
+    if($counter < 4){
 
 $id1=$row1['id'];
   $query = mysql_query("SELECT * FROM places_rating WHERE id_places='$id1'");
@@ -490,7 +530,7 @@ for ($i=0; $i<=2; $i++) {
                 </div> </div>
 						</div>
 						<?php
-						}}
+						}}}}
 						?></div>
 					</div></div>
 					<div class="line5"></div>

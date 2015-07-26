@@ -328,8 +328,40 @@ for ($i=0; $i<=2; $i++) {
 
 						</div>
 					</div>
+						
 					<!-- END OF IMG RIGHT TEXT -->
 					<div class="clearfix"></div>
+										<div class="col-md-4 cpdd02">
+					<div class="pagecontainer2 mt20 alsolikebox">
+					<div class="cpadding1">
+						<span class="icon-location"></span>
+						<h3 class="opensans">Πρόσφατα Καταχωρημένα μέλη σε αυτήν την Ομάδα...</h3>
+						<div class="clearfix"></div>
+					</div>
+					<?php
+                              $id = intval($_GET['id']);
+							   $req = mysql_query("SELECT * FROM users WHERE tourism_type='$id' ORDER BY id DESC" );
+  while($row = mysql_fetch_array($req))  {			   
+                               ?>
+					<div class="cpadding1 ">
+						<div class="wh30percent left">
+							<a href="#"><img width="80" alt="" class="left mr20" src="<?php  echo $row['image_src']; ?>"></a>
+						</div>
+						<div class="wh65percent right">
+							<a class="dark" href="#"><b><?php  echo $row['name']; ?> <?php  echo $row['lastname']; ?></b></a><br>
+							<span class="opensans green bold size14"><?php  echo $row['address']; ?></span> <span class="grey"><?php  echo $row['city']; ?></span><br>
+						</div>	
+						<div class="clearfix"></div>
+					</div>
+					<div class="line5"></div>
+						<?php 
+							}
+                        ?>
+						<br>
+				
+					
+				</div>
+		</div>
 					<br/><br/>
 					
 				
@@ -338,10 +370,11 @@ for ($i=0; $i<=2; $i++) {
 					
 				</div>
 				
-
+			
 				
 			<div class="clearfix"></div><br/><br/>
-			</div>
+			
+</div>
 			<!-- END CONTENT -->			
 			
 

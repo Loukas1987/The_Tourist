@@ -657,7 +657,7 @@ z-index:100;
 }
 
 
-a.add2fav{
+input.add2fav{
 width:100%;
 height:52px;
 border:1px solid #e5e5e5;
@@ -678,15 +678,15 @@ border-radius: 2px;
 -moz-box-shadow: rgba(0,0,0,0.1) 1px 1px 3px;
 box-shadow: rgba(0,0,0,0.1) 1px 1px 3px;
 }
-a:hover.add2fav{
+input:hover.add2fav{
 text-decoration:none; 
 color:#666!important; 
 border:1px solid #ccc;
 background:url('../images/btn-plus-over.png') #fff no-repeat 20px 0;
 }
-a:link.add2fav{text-decoration:none ; color:#7c8c94; }
-a:active.add2fav{text-decoration:none ; color:#7c8c94; }
-a:visited.add2fav {text-decoration:none ; color:#7c8c94; }
+input:link.add2fav{text-decoration:none ; color:#7c8c94; }
+input:active.add2fav{text-decoration:none ; color:#7c8c94; }
+input:visited.add2fav {text-decoration:none ; color:#7c8c94; }
 
 .btnmarg{margin-bottom:20px;}
 @media (min-width: 992px){
